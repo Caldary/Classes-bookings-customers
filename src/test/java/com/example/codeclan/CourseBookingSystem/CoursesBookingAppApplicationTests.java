@@ -54,4 +54,10 @@ class CoursesBookingAppApplicationTests {
 		assertEquals(2, foundByDate.size());
 	}
 
+	@Test
+	public void canFindCustomersByTownAndCourse(){
+		List<Customer> foundByCourseAndTown = iCustomerRepository.findByBookingsIdCourseTown(5L, "New York");
+		assertEquals(1, foundByCourseAndTown.size());
+	}
+
 }
