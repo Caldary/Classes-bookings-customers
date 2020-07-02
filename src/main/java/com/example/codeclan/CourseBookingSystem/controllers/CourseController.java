@@ -22,10 +22,11 @@ public class CourseController {
     public ResponseEntity<List<Course>> findCoursesByStarRating(
             @RequestParam(name = "starRating", required = false) Integer starRating)
     {
-//
+        // Get by star rating
         if (starRating != null) {
             return new ResponseEntity<>(iCourseRepository.findByStarRating(starRating), HttpStatus.OK);
         }
+        //  Get courses
             return new ResponseEntity<>(iCourseRepository.findAll(), HttpStatus.OK);
     }
 
