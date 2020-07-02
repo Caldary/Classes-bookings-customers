@@ -13,6 +13,14 @@ public class Booking {
     @Column(name = "date")
     private String date;
 
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
+
     public Booking(String date){
         this.date = date;
     }

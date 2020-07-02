@@ -1,6 +1,10 @@
 package com.example.codeclan.CourseBookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -19,10 +23,15 @@ public class Course {
     @Column(name = "starRating")
     private int starRating;
 
+    @JsonIgnoreProperties({"course"})
+    @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
+    private List<Customer> customers;
+
     public Course(String name, String town, int starRating) {
         this.name = name;
         this.town = town;
         this.starRating = starRating;
+        this.customers = new ArrayList<>();
     }
 
     public Course(){
