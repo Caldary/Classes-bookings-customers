@@ -16,11 +16,11 @@ import java.util.List;
 public class BookingController {
 
     @Autowired
-    IBookingRepository bookingRepository;
+    IBookingRepository iBookingRepository;
 
     @GetMapping(value ="/bookings")
     public ResponseEntity<List<Booking>> getAllBookings(){
-        return new ResponseEntity<>(bookingRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(iBookingRepository.findAll(), HttpStatus.OK);
     }
 
 }

@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader implements ApplicationRunner {
     @Autowired
-    IBookingRepository bookingRepository;
+    IBookingRepository iBookingRepository;
 
     @Autowired
-    ICustomerRepository customerRepository;
+    ICustomerRepository iCustomerRepository;
 
     @Autowired
-    ICourseRepository courseRepository;
+    ICourseRepository iCourseRepository;
 
     public DataLoader(){
     }
@@ -29,46 +29,44 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
         Course course1 = new Course("Java", "Edinburgh", 5);
-        courseRepository.save(course1);
+        iCourseRepository.save(course1);
 
         Course course2 = new Course("Ruby", "Glasgow", 1);
-        courseRepository.save(course2);
+        iCourseRepository.save(course2);
 
         Course course3 = new Course("JavaScript", "Inverness", 3);
-        courseRepository.save(course3);
+        iCourseRepository.save(course3);
 
         Course course4 = new Course("Python", "Edinburgh", 4);
-        courseRepository.save(course4);
-
+        iCourseRepository.save(course4);
         Course course5 = new Course("Php", "London", 3);
-        courseRepository.save(course5);
+        iCourseRepository.save(course5);
 
         Course course6 = new Course("Css", "Aberdeen", 11);
-        courseRepository.save(course6);
+        iCourseRepository.save(course6);
 
         Customer customer1 = new Customer("Alan", "Edinburgh", 31);
-        customerRepository.save(customer1);
-
+        iCustomerRepository.save(customer1);
         Customer customer2 = new Customer("Paulo", "Joburg", 32);
-        customerRepository.save(customer2);
+        iCustomerRepository.save(customer2);
 
         Customer customer3 = new Customer("Iron Man", "New York", 45);
-        customerRepository.save(customer3);
+        iCustomerRepository.save(customer3);
 
         Booking booking1 = new Booking("January", customer1, course1);
-        bookingRepository.save(booking1);
+        iBookingRepository.save(booking1);
 
         Booking booking2 = new Booking("April", customer1, course2);
-        bookingRepository.save(booking1);
+        iBookingRepository.save(booking2);
 
         Booking booking3 = new Booking("June", customer2, course2);
-        bookingRepository.save(booking1);
+        iBookingRepository.save(booking3);
 
         Booking booking4 = new Booking("July", customer3, course3);
-        bookingRepository.save(booking1);
+        iBookingRepository.save(booking4);
 
         Booking booking5 = new Booking("January", customer3, course5);
-        bookingRepository.save(booking1);
+        iBookingRepository.save(booking5);
 
 
     }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -15,10 +16,17 @@ import java.util.List;
 public class CourseController {
 
     @Autowired
-    ICourseRepository courseRepository;
+    ICourseRepository iCourseRepository;
 
     @GetMapping(value ="/courses")
-    public ResponseEntity<List<Course>> getAllCourses(){
-        return new ResponseEntity<>(courseRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Course>> findCoursesByStarRating(
+            @RequestParam(name = "starRating", required = false) Integer starRating)
+    {
+//
+        if (starRating != null) {
+            return new ResponseEntity<>(iCourseRepository.findByStarRating(starRating), HttpStatus.OK);
+        }
+            return new ResponseEntity<>(iCourseRepository.findAll(), HttpStatus.OK);
     }
+
 }

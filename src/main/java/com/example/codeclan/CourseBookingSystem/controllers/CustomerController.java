@@ -15,11 +15,11 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    ICustomerRepository customerRepository;
+    ICustomerRepository iCustomerRepository;
 
     @GetMapping(value ="/customers")
     public ResponseEntity<List<Customer>> getAllCustomers(){
-        return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(iCustomerRepository.findAll(), HttpStatus.OK);
     }
 
 
