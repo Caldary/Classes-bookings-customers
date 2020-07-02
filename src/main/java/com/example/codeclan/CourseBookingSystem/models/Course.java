@@ -1,5 +1,6 @@
 package com.example.codeclan.CourseBookingSystem.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -23,19 +24,18 @@ public class Course {
     @Column(name = "starRating")
     private int starRating;
 
-    @JsonIgnoreProperties({"course"})
+    @JsonBackReference
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY)
-    private List<Customer> customers;
+    private List<Booking> bookings;
 
     public Course(String name, String town, int starRating) {
         this.name = name;
         this.town = town;
         this.starRating = starRating;
-        this.customers = new ArrayList<>();
+        this.bookings = new ArrayList<>();
     }
 
     public Course(){
-
     }
 
     public Long getId() {
@@ -68,5 +68,13 @@ public class Course {
 
     public void setStarRating(int starRating) {
         this.starRating = starRating;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }
