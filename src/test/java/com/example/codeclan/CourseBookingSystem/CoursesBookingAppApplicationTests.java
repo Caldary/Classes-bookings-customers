@@ -48,4 +48,10 @@ class CoursesBookingAppApplicationTests {
 		assertEquals("Java",foundCourseByCustomer.get(0).getName());
 	}
 
+	@Test
+	public void canFindBookingsByDate(){
+		List<Booking> foundByDate = iBookingRepository.findByDate("January");
+		assertEquals(2, foundByDate.size());
+	}
+
 }
