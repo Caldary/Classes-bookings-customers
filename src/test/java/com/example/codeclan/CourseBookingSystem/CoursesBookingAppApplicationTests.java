@@ -38,11 +38,14 @@ class CoursesBookingAppApplicationTests {
 
 	@Test
 	public void canFindCustomersByCourse(){
-		Course course1 = new Course("Css", "Edinburgh", 5);
-		Customer customer1 = new Customer("Alan", "New York", 25);
-		Booking booking1 = new Booking("January", customer1, course1);
 		List<Customer> foundCustomersByCourse = iCustomerRepository.findCustomersByBookingsCourseId(1L);
 		assertEquals("Alan", foundCustomersByCourse.get(0).getName());
+	}
+
+	@Test
+	public void canFindCoursesByCustomer(){
+		List<Course> foundCourseByCustomer = iCourseRepository.findCoursesByBookingsCustomerId(1L);
+		assertEquals("Java",foundCourseByCustomer.get(0).getName());
 	}
 
 }
