@@ -21,8 +21,10 @@ public class Booking {
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    public Booking(String date){
+    public Booking(String date,Customer customer, Course course){
         this.date = date;
+        this.customer = customer;
+        this.course = course;
     }
 
     public Booking(){
