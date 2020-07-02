@@ -27,7 +27,4 @@ public class CustomerController {
         return new ResponseEntity<>(iCustomerRepository.findAll(), HttpStatus.OK);
     }
 
-
-
-
 }

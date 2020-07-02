@@ -19,15 +19,17 @@ public class CourseController {
     ICourseRepository iCourseRepository;
 
     @GetMapping(value ="/courses")
-    public ResponseEntity<List<Course>> findCoursesByStarRating(
-            @RequestParam(name = "starRating", required = false) Integer starRating)
-    {
+    public ResponseEntity<List<Course>> findCourses
+            (@RequestParam(name = "starRating", required = false) Integer starRating,
+             @RequestParam(name= "customer_id", required = false) Long customer_id) {
+        if (customer_id != null) {
+            return new ResponseEntity<>(iCourseRepository.findCoursesByBookingsCustomerId(customer_id), HttpStatus.OK);
+        }
         // Get by star rating
         if (starRating != null) {
-            return new ResponseEntity<>(iCourseRepository.findByStarRating(starRating), HttpStatus.OK);
+                return new ResponseEntity<>(iCourseRepository.findByStarRating(starRating), HttpStatus.OK);
         }
         //  Get courses
-            return new ResponseEntity<>(iCourseRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(iCourseRepository.findAll(), HttpStatus.OK);
     }
-
 }
